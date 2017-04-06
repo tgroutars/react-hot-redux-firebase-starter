@@ -56,3 +56,9 @@ nav {
   font-size: 6rem;
   line-height: 8rem;
 }
+
+.chat-page__message-box {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
