@@ -1,0 +1,7 @@
+- Show message author
+- stop listening to messages when leaving chat
+- Router always redirects to home on reload
+
+- better design ?
+
+- remove unnecessary routes and nav

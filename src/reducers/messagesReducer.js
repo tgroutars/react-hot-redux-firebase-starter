@@ -3,8 +3,9 @@ import initialState from './initialState';
 
 export default function messagesReducer(state = initialState.messages, action) {
   switch (action.type) {
+    case types.SET_MESSAGES:
+      return action.messages;
     case types.ADD_MESSAGE:
-      // TODO: keep messages sorted
       return [
         ...state,
         action.message

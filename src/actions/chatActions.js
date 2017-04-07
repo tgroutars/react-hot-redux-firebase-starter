@@ -3,29 +3,44 @@ import * as firebase from 'firebase/firebase-browser';
 import { beginAjaxCall } from './ajaxStatusActions';
 import * as types from './actionTypes';
 
-export function addMessage(message) {
+function getRawMessage(message) {
   const { author, createdAt, text } = message.val();
   const key = message.key;
 
   return {
+    key,
+    author,
+    createdAt,
+    text
+  };
+}
+
+export function addMessage(message) {
+  return {
     type: types.ADD_MESSAGE,
-    message: {
-      key,
-      author,
-      createdAt,
-      text
-    }
+    message
+  };
+}
+
+export function setMessages(messages) {
+  return {
+    type: types.SET_MESSAGES,
+    messages
   };
 }
 
 export function fetchMessages() {
   return (dispatch) => {
+    dispatch(setMessages([]));
+
     dispatch(beginAjaxCall);
 
-    // TODO: sort messages
-    // TODO: fetch only last 10
-    const messagesRef = firebase.database().ref('messages');
-    messagesRef.on('child_added', data => dispatch(addMessage(data)));
+    const messagesRef = firebase.database().ref('messages')
+      .orderByChild('createdAt')
+      .limitToLast(10);
+    messagesRef.on('child_added', messageSnapshot => {
+      dispatch(addMessage(getRawMessage(messageSnapshot)));
+    });
   };
 }
 
