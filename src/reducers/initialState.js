@@ -18,5 +18,6 @@ export default {
   },
   ajaxCallsInProgress: 0,
   messages: [],
-  rooms: []
+  rooms: [],
+  roomUsers: []
 };

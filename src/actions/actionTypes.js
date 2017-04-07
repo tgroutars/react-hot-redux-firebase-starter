@@ -19,3 +19,8 @@ export const SET_MESSAGES = 'SET_MESSAGES';
 // Rooms actions
 export const ADD_ROOM = 'ADD_ROOM';
 export const SET_ROOMS = 'SET_ROOMS';
+
+// Room Users
+export const ADD_ROOM_USER = 'ADD_ROOM_USER';
+export const SET_ROOM_USERS = 'SET_ROOM_USERS';
+export const REMOVE_ROOM_USER = 'REMOVE_ROOM_USER';

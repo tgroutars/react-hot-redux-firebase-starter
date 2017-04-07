@@ -4,6 +4,7 @@ import routesPermissions from './routesPermissionsReducer';
 import auth from './authReducer';
 import messages from './messagesReducer';
 import rooms from './roomsReducer';
+import roomUsers from './roomUserReducer';
 
 import ajaxCallsInProgress from './ajaxStatusReducer';
 import { routerReducer } from 'react-router-redux';
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   auth,
   ajaxCallsInProgress,
   messages,
-  rooms
+  rooms,
+  roomUsers
 });
 
 export default rootReducer;

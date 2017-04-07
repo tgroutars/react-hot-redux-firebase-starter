@@ -29,3 +29,11 @@ body {
 .message-list li {
   list-style: none;
 }
+
+.users-btn .users-list {
+  display: none;
+}
+
+.users-btn:hover .users-list {
+  display: block;
+}

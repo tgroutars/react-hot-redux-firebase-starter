@@ -56,6 +56,7 @@ class ChatPage extends Component {
 
   render() {
     const { message } = this.state;
+    const { roomUsers } = this.props;
 
     return (
       <div className="chat-page">
@@ -64,7 +65,13 @@ class ChatPage extends Component {
             <textarea className="form-control" onChange={this.onMessageChange} placeholder="Write your message..." value={message} />
           </div>
           <div className="col-xs-4">
-            <button className="btn btn-default" onClick={this.onSend}>Submit</button>
+            <button className="btn btn-default" onClick={this.onSend}>Submit</button><br/>
+            <button className="btn btn-default users-btn">
+              Users
+              <div className="users-list">
+                {roomUsers.map(email => <div key={email}>{email}</div>)}
+              </div>
+            </button>
           </div>
         </div>
         <Messages />
@@ -77,11 +84,16 @@ ChatPage.propTypes = {
   actions: PropTypes.object.isRequired,
   params: React.PropTypes.shape({
     id: React.PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  roomUsers: PropTypes.array.isRequired
 };
+
+const mapStateToProps = (state) => ({
+  roomUsers: state.roomUsers
+});
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({ leaveRoom, joinRoom, sendMessage }, dispatch)
 });
 
-export default connect(null, mapDispatchToProps)(ChatPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ChatPage);
