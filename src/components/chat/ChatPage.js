@@ -19,11 +19,23 @@ class ChatPage extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.joinRoom();
+    const { actions, params: { id } } = this.props;
+    actions.joinRoom(id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { actions, params: { id } } = this.props;
+    const { params: { id: nextId } } = nextProps;
+
+    if (nextId !== id) {
+      actions.leaveRoom(id);
+      actions.joinRoom(nextId);
+    }
   }
 
   componentWillUnmount() {
-    this.props.actions.leaveRoom();
+    const { actions, params: { id } } = this.props;
+    actions.leaveRoom(id);
   }
 
   onMessageChange(evt) {
@@ -37,7 +49,8 @@ class ChatPage extends Component {
     if (!message) {
       return;
     }
-    this.props.actions.sendMessage(message);
+    const { actions, params: { id } } = this.props;
+    actions.sendMessage(id, message);
     this.setState({ message: '' });
   }
 
@@ -61,7 +74,10 @@ class ChatPage extends Component {
 }
 
 ChatPage.propTypes = {
-  actions: React.PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  params: React.PropTypes.shape({
+    id: React.PropTypes.string.isRequired
+  }).isRequired
 };
 
 const mapDispatchToProps = (dispatch) => ({

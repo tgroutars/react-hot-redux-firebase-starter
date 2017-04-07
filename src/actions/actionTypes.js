@@ -15,3 +15,7 @@ export const USER_IS_ADMIN_SUCCESS = 'USER_IS_ADMIN_SUCCESS';
 // Chat actions
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const SET_MESSAGES = 'SET_MESSAGES';
+
+// Rooms actions
+export const ADD_ROOM = 'ADD_ROOM';
+export const SET_ROOMS = 'SET_ROOMS';

@@ -29,13 +29,13 @@ export function setMessages(messages) {
   };
 }
 
-export function joinRoom() {
+export function joinRoom(id) {
   return (dispatch) => {
     dispatch(setMessages([]));
 
     dispatch(beginAjaxCall);
 
-    const messagesRef = firebase.database().ref('messages')
+    const messagesRef = firebase.database().ref('roomMessages/' + id)
       .orderByChild('createdAt')
       .limitToLast(10);
     messagesRef.on('child_added', messageSnapshot => {
@@ -44,14 +44,14 @@ export function joinRoom() {
   };
 }
 
-export function leaveRoom() {
+export function leaveRoom(id) {
   return (dispatch) => {
     dispatch(setMessages([]));
-    firebase.database().ref('messages').off('child_added');
+    firebase.database().ref('roomMessages/' + id).off('child_added');
   };
 }
 
-export function sendMessage(text) {
+export function sendMessage(id, text) {
   return (dispatch) => {
     dispatch(beginAjaxCall);
 
@@ -59,7 +59,7 @@ export function sendMessage(text) {
     if (!user) {
       return;
     }
-    const newMessageRef = firebase.database().ref('messages').push();
+    const newMessageRef = firebase.database().ref('roomMessages/' + id).push();
     newMessageRef.set({
       text,
       author: user.email,
