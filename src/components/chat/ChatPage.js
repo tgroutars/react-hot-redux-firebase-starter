@@ -46,11 +46,15 @@ class ChatPage extends Component {
 
     return (
       <div className="chat-page">
-        <Messages />
         <div className="chat-page__message-box">
-          <textarea className="form-control" onChange={this.onMessageChange} placeholder="Write your message..." value={message} />
-          <button className="btn btn-default" onClick={this.onSend}>Submit</button>
+          <div className="col-xs-8">
+            <textarea className="form-control" onChange={this.onMessageChange} placeholder="Write your message..." value={message} />
+          </div>
+          <div className="col-xs-4">
+            <button className="btn btn-default" onClick={this.onSend}>Submit</button>
+          </div>
         </div>
+        <Messages />
       </div>
     );
   }

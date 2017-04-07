@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import Message from './Message';
 
 const Messages = ({ messages }) => (
-  <div className="message-list">
+  <ul className="message-list col-xs-12">
     {messages.map(message => <Message key={message.key} message={message} />)}
-  </div>
+  </ul>
 );
 
 Messages.propTypes = {

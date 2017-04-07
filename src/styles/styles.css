@@ -1,66 +1,14 @@
 /* Styles */
 html, body, #root, .container-loading {
-  height: 100%;
+  height: calc(100vh - 60px);
 }
 
 body {
   padding-top: 60px;
 }
 
-#app {
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #4d4d4d;
-  min-width: 550px;
-  max-width: 850px;
-  margin: 0 auto;
-}
-
-a.active {
-  color: orange;
-}
-
-.container-loading {
-  display: table;
-  table-layout: fixed;
-  width: 100%;
-}
-
-.loading {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto;
-}
-
-.loading-row {
-  background-color: #fff;
-  min-height: 100%;
+.chat-page {
   height: 100%;
-  display:table-cell;
-  vertical-align:middle;
-  text-align:center;
-  width: 100%;
-}
-
-.loading div {
-  width: inherit !important;
-}
-
-.loading svg {
-  display: block;
-  width: 100px;
-  margin: 0 auto;
-}
-
-.h1-loading {
-  color: #fff;
-  font-size: 6rem;
-  line-height: 8rem;
-}
-
-.chat-page__message-box {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
 }
 
 .chat-page .message-header {
@@ -70,4 +18,14 @@ a.active {
 .chat-page .message-text {
   border-bottom: 1px solid black;
   padding-bottom: 10px;
+}
+
+.message-list {
+  height: calc(100vh - 140px);
+  padding-bottom: 80px;
+  margin-top: 30px;
+}
+
+.message-list li {
+  list-style: none;
 }

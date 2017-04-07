@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 
 const Message = ({ message: { author, text } }) => (
-  <div>
+  <li className="message">
     <div className="message-header">{author}</div>
     <div className="message-text">{text}</div>
-  </div>
+  </li>
 );
 
 Message.propTypes = {

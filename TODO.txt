@@ -2,11 +2,10 @@ TODO
 ####
 
 - Show message time
-- Router always redirects to home on reload
-
-- better design ?
+- redirect to login if not authenticated
 
 TO IMPROVE
 ##########
 
 - Security (set user server side)
+- better design
