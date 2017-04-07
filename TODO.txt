@@ -1,7 +1,14 @@
-- Show message author
+TODO
+####
+
 - Show message time
 - Router always redirects to home on reload
 
 - better design ?
 
 - remove unnecessary routes and nav
+
+TO IMPROVE
+##########
+
+- Security (set user server side)

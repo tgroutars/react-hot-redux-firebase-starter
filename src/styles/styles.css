@@ -62,3 +62,12 @@ nav {
   bottom: 0;
   width: 100%;
 }
+
+.chat-page .message-header {
+  font-weight: bold;
+}
+
+.chat-page .message-text {
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}

@@ -62,7 +62,7 @@ export function sendMessage(text) {
     const newMessageRef = firebase.database().ref('messages').push();
     newMessageRef.set({
       text,
-      author: user && user.uid,
+      author: user.email,
       createdAt: firebase.database.ServerValue.TIMESTAMP
     });
   };

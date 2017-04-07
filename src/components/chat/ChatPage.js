@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import trim from 'lodash.trim';
 
 import { joinRoom, leaveRoom, sendMessage } from '../../actions/chatActions';
 import Messages from './Messages';
@@ -32,7 +33,11 @@ class ChatPage extends Component {
   onSend(evt) {
     evt.preventDefault();
 
-    this.props.actions.sendMessage(this.state.message);
+    const message = trim(this.state.message);
+    if (!message) {
+      return;
+    }
+    this.props.actions.sendMessage(message);
     this.setState({ message: '' });
   }
 

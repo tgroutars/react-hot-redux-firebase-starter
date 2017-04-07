@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import Message from './Message';
+
 const Messages = ({ messages }) => (
-  <div className="chat-page__message-list">
-    {messages.map(message => <div key={message.key}>{message.text}</div>)}
+  <div className="message-list">
+    {messages.map(message => <Message key={message.key} message={message} />)}
   </div>
 );
 
