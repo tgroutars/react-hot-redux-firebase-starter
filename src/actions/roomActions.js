@@ -46,3 +46,15 @@ export function leaveRooms() {
     firebase.database().ref('rooms').off('child_added');
   };
 }
+
+
+export function createRoom(name) {
+  return (dispatch) => {
+    dispatch(beginAjaxCall);
+
+    const newRoomRef = firebase.database().ref('rooms').push();
+    newRoomRef.set({
+      name
+    });
+  };
+}
