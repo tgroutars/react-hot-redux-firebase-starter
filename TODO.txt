@@ -6,8 +6,6 @@ TODO
 
 - better design ?
 
-- remove unnecessary routes and nav
-
 TO IMPROVE
 ##########
 

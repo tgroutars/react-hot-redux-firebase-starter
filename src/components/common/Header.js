@@ -5,24 +5,21 @@ import LoginLink from './LoginLink';
 import LogoutLink from './LogoutLink';
 import AdminLink from './AdminLink';
 
-const Header = ({loading, signOut, auth, user}) => {
-
-  let loginLogoutLink = auth.isLogged ? <LogoutLink signOut={signOut} /> : <LoginLink />;
-  let adminLink = user.isAdmin ? <AdminLink /> : null;
-
+const Header = ({signOut, auth, user}) => {
   return (
-    <nav>
-      <IndexLink to="/" activeClassName="active">Home</IndexLink>
-      {" | "}
-      <Link to="/about" activeClassName="active">About</Link>
-      {" | "}
-      <Link to="/protected" activeClassName="active">Protected</Link>
-      {" | "}
-      <Link to="/chat" activeClassName="active">Chat</Link>
-      {adminLink}
-      {" | "}
-      {loginLogoutLink}
-      {loading && <LoadingDots interval={100} dots={20}/>}
+    <nav className="navbar navbar-default navbar-fixed-top">
+      <div className="container-fluid">
+        <div className="navbar-header">
+          <IndexLink className="navbar-brand" to="/">ChatX</IndexLink>
+        </div>
+        <div>
+          <ul className="nav navbar-nav">
+            {auth.isLogged ? <li><LogoutLink signOut={signOut} /></li> : null}
+            {!auth.isLogged ? <li><Link to="/register">Sign Up</Link></li> : null}
+            {!auth.isLogged ? <li><Link to="/login">Login</Link></li> : null}
+          </ul>
+        </div>
+      </div>
     </nav>
   );
 };
@@ -30,8 +27,7 @@ const Header = ({loading, signOut, auth, user}) => {
 Header.propTypes = {
   signOut: React.PropTypes.func.isRequired,
   auth: React.PropTypes.object.isRequired,
-  user: React.PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired
+  user: React.PropTypes.object.isRequired
 };
 
 export default Header;
