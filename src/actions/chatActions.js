@@ -29,7 +29,7 @@ export function setMessages(messages) {
   };
 }
 
-export function fetchMessages() {
+export function joinRoom() {
   return (dispatch) => {
     dispatch(setMessages([]));
 
@@ -41,6 +41,13 @@ export function fetchMessages() {
     messagesRef.on('child_added', messageSnapshot => {
       dispatch(addMessage(getRawMessage(messageSnapshot)));
     });
+  };
+}
+
+export function leaveRoom() {
+  return (dispatch) => {
+    dispatch(setMessages([]));
+    firebase.database().ref('messages').off('child_added');
   };
 }
 

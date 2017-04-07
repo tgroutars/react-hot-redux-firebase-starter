@@ -1,5 +1,5 @@
 - Show message author
-- stop listening to messages when leaving chat
+- Show message time
 - Router always redirects to home on reload
 
 - better design ?

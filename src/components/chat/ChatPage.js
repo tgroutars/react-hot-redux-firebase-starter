@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { fetchMessages, sendMessage } from '../../actions/chatActions';
+import { joinRoom, leaveRoom, sendMessage } from '../../actions/chatActions';
 import Messages from './Messages';
 
 class ChatPage extends Component {
@@ -18,7 +18,11 @@ class ChatPage extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.fetchMessages();
+    this.props.actions.joinRoom();
+  }
+
+  componentWillUnmount() {
+    this.props.actions.leaveRoom();
   }
 
   onMessageChange(evt) {
@@ -52,7 +56,7 @@ ChatPage.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators({ fetchMessages, sendMessage }, dispatch)
+  actions: bindActionCreators({ leaveRoom, joinRoom, sendMessage }, dispatch)
 });
 
 export default connect(null, mapDispatchToProps)(ChatPage);
