@@ -113,8 +113,6 @@ export function leaveRoom(id) {
     if (!user) {
       return;
     }
-    firebase.database().ref('roomMessages/' + id).off('child_added');
-    firebase.database().ref('roomMessages/' + id).off('child_added');
 
     // Set user as absent
     firebase.database().ref('presence/' + id).child(user.uid).remove();
