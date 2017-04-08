@@ -48,8 +48,8 @@ class RoomsPage extends Component {
     return (
       <div>
         <div className="row">
-          <div className="col-xs-8">
-            <textarea className="form-control" onChange={this.onNameChange} placeholder="Create a chat room" value={name} />
+          <div className="col-xs-4">
+            <input className="form-control" onChange={this.onNameChange} placeholder="Create a chat room" type="text" value={name} />
           </div>
           <div className="col-xs-4">
             <button className="btn btn-primary" onClick={this.onCreate}>Create</button>
